@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HashWithSalt.Data;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace HashWithSalt
         /// Server: Loopback
         /// Security: Trusted
         /// </summary>
-        readonly string conString = "Server=127.0.0.1; Initial Catalog=UserDB; Trusted_Connection=True;";
+        static readonly string conString = ConnectionString.GetConnection();
 
         public SqlConnection con;
 
