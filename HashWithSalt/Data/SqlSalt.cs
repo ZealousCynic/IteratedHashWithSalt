@@ -19,7 +19,6 @@ namespace HashWithSalt
         //This is wrong AF  --- Quick testing
         public void StoreSalt(string salt)
         {
-            Console.WriteLine("Saving salt...");
             con.Cmd.CommandText = "InsertSalt";
             con.Cmd.CommandType = System.Data.CommandType.StoredProcedure;
             con.Cmd.Parameters.Add(new SqlParameter("SaltValue", salt));
