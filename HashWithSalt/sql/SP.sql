@@ -1,0 +1,46 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE InsertUser
+@Username VARCHAR(128) = NULL,
+@Password VARCHAR(128) = NULL
+AS
+BEGIN
+INSERT INTO [Users]([Username], [Password]) VALUES(@Username, @Password);
+END
+GO
+
+CREATE PROCEDURE GetByID
+@ID INT = NULL
+AS
+BEGIN
+SELECT * FROM [Users]
+WHERE [ID] = @ID;
+END
+GO
+
+CREATE PROCEDURE GetByPassword
+@Password VARCHAR(MAX) = NULL
+AS
+BEGIN
+SELECT * FROM [Users]
+WHERE [Password] = @Password;
+END
+GO
+
+CREATE PROCEDURE GetAll
+AS
+BEGIN
+SELECT * FROM Users;
+END
+GO
+
+CREATE PROCEDURE InsertSalt
+@Saltvalue VARCHAR(128) = NULL
+AS
+BEGIN
+INSERT INTO [Salt]([SaltValue]) VALUES(@Saltvalue);
+END
+GO
