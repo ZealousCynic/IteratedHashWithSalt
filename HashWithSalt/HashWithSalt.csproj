@@ -43,15 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ISQLCon.cs" />
-    <Compile Include="SqlSalt.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Data\Abstractions\ISQLCon.cs" />
+    <Compile Include="Data\SqlSalt.cs" />
+    <Compile Include="Data\User.cs" />
     <Compile Include="HashWorker.cs" />
-    <Compile Include="IDataStorage.cs" />
+    <Compile Include="Data\Abstractions\IDataStorage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlCon.cs" />
-    <Compile Include="UserStorage.cs" />
+    <Compile Include="Data\SqlCon.cs" />
+    <Compile Include="Data\UserStorage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
