@@ -17,16 +17,16 @@ namespace HashWithSalt
 
             Console.WriteLine("Please enter a number corresponding to your desired hash type.");
 
-            Console.WriteLine("What operation would you like to perform?\n\n0: Login\n1: Create new user\n2: Display known users\n");
-
             HashWorker worker = new HashWorker();
 
             byte[] salt = GetSalt(worker);
 
-            ChooseOperation(worker, salt);
+            while (attempts <= 5)
+                ChooseOperation(worker, salt);
 
-            Console.WriteLine("Hashed salted closing down...");
+            Console.WriteLine("Program terminating due to too many invalid access attempts.");
             Console.ReadKey();
+            Environment.Exit(0xA0);
         }
 
         static byte[] GetSalt(HashWorker worker)
@@ -49,6 +49,12 @@ namespace HashWithSalt
         {
             int operation;
 
+            Console.WriteLine("What operation would you like to perform?\n\n" +
+                "0: Login\n" +
+                "1: Create new user\n" +
+                "2: Display known users\n" +
+                "9: Exit Application\n\n");
+
             int.TryParse(Console.ReadLine(), out operation);
 
             switch (operation)
@@ -61,6 +67,11 @@ namespace HashWithSalt
                     break;
                 case 2:
                     DisplayUsers();
+                    break;
+                case 9:
+                    Console.WriteLine("Hashed salted closing down...");
+                    Console.ReadKey();
+                    Environment.Exit(0);
                     break;
                 default:
                     break;
@@ -119,7 +130,7 @@ namespace HashWithSalt
                 u = us.GetByPassword(password);
             }
 
-            if(u is null)
+            if (u is null)
             {
                 attempts++;
                 Console.WriteLine("Invalid credentials...");
@@ -127,6 +138,7 @@ namespace HashWithSalt
             }
 
             Console.WriteLine(u.ToString());
+            attempts = 0;
         }
     }
 }
