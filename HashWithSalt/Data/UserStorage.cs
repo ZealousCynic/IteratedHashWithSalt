@@ -31,8 +31,6 @@ namespace HashWithSalt
             con.Disconnect();
         }
 
-
-
         public User[] GetAll()
         {
             con.Cmd.CommandText = "GetAll";

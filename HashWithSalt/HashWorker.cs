@@ -4,10 +4,6 @@ namespace HashWithSalt
 {
     class HashWorker
     {
-        public HashWorker()
-        {
-        }
-
         public byte[] GetSalt(int length)
         {
             byte[] salt = new byte[length];
